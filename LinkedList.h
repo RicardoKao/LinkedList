@@ -8,23 +8,31 @@
 
 class LinkedList{
 public:
-    LinkedList:head(nullptr),tail(nullptr){
+    LinkedList():head(nullptr),tail(nullptr){};
+    LinkedList(int n){
+        head = new ListNode();
+        ListNode *p = head;
+        while((n-2)!=0){
+            p->next =  new ListNode();
+        }
+        p->next = new ListNode();
+        tail = p->next;
     }
-    ~List(){
+    ~ LinkedList(){
         delete head;
         delete tail;
     };
     void insertNode(int position, int val);
-    void deleteNode(int position);
+    void removeNode(int position);              //remove from head
+    void removeNodeFE(int position);      //remove from tail
     void modifyNode(int position, int newVal);
     int getPosition(int val);
     int getValue(int position);
-    LinkedList inverseList();
+    ListNode* reverseList();
     void print();
 private:
-    ListNode *head;
-    ListNode *tail;
+    ListNode* head;
+    ListNode* tail;
     int position;
-
 };
 #endif //LINKEDLIST_LINKEDLIST_H
